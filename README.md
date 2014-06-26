@@ -1,7 +1,9 @@
 Gets a random Wiki article, formats it, and sends it off as a tweet three times an hour
 
 Usage: python3 wikitedium.py [--notweet/--manual]
+
 Flags:
+
        --notweet:  Get and format a Wiki article without sending it to twitter
        --manual :  Bypass the schedule restrictions, just sending one tweet immediately
 
