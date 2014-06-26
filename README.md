@@ -1,6 +1,6 @@
 Gets a random Wiki article, formats it, and sends it off as a tweet three times an hour
 
-Usage: python3 wikitedium.py [--notweet/--manual]
+Usage: python3 wikitedium.py [--notweet|--manual]
 
 Flags:
 
