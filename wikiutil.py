@@ -14,14 +14,14 @@ IMG_GET_URL = ("http://en.wikipedia.org/w/api.php?action=query&prop=imageinfo" +
 # in by the program.
 INVALID_TITLES = ["List ", " season", "History of ", "Geography of ", "Politics of ",
 		 "Cinema of ", "Athletics at ", " – Singles", " – Doubles",
-		 " – Men's ", " – Women's "]
+		 " – Men's ", " – Women's ", "Economy of "]
 INVALID_CATS = ["isambiguation", " stubs", "List of", " lists", "ootball", "ugby",
 	       "Surname", "Villages", "Sport", "thletes", "Outlines", "ockey",
 	       "unclear notability", "promotional tone", "onstituencies", "abinets",
 	       "discographies", "filmographies", " skaters", "Challenger Tour",
 	       "Set indices on", "Populated places in", "runners", "bibliographies",
 	       "electorates", " bishop", "occer", "Towns in ", " episodes",
-	       "Townships in ", " sport", " elections", " cricketers", " boxers",
+	       "Townships in ", " sport", " elections", " cricketers", "boxers",
 	       "Nations at the ",  " timelines", "Districts of ", " counties",
 	       "Golf in ", " players", "basketball", " sprinters", " swimmers",
 	       "Boroughs in ", "State Senators", "Formula One races", "WTA Tour",
@@ -31,20 +31,26 @@ INVALID_CATS = ["isambiguation", " stubs", "List of", " lists", "ootball", "ugby
 	       "chool districts", "Bilateral relations of ", "Medical databases",
 	       "State highways in ", " seasons", "Championship", "ompanies of India",
 	       "tate legislators", " hurlers", "Swimming at the ", "NPOV disputes",
-	       "Wrestling at the ", "Diving at the ", "Qualification for the ",
+	       "Wrestling at ", "Diving at ", "Qualification for ", " statistics",
 	       "Search engine optimization", " executives", "peacock terms",
 	       "possible conflicts of interest", " wrestling", " Women's Circuit",
-	       " House of Representatives", " legislative sessions", " resolutions"]
+	       " House of Representatives", " legislative sessions", " resolutions",
+	       "ubdivisions of ", "Tehsils of ", "Taluk", "ensus-designated places ",
+	       " bandy", "econdary schools", "middle schools", " municipalities",
+	       " eclipses", "Unincorporated communities ", "igh schools",
+	       "Congressional districts of ", " Games", "City Council members",
+	       "Area Codes in "]
 INVALID_IMGS = ["Icon", "icon", "Logo", "logo", "Ambox", "Login_Manager"]
 
 # Strings invalid for sentence ends
-INVALID_ENDS = ["Dr", "Mr", "etc", "Co", "St", "Inc", "Mt", "com"]
+INVALID_ENDS = ["Dr", "Mr", "etc", "Co", "St", "Inc", "Mt", "com", "ca", "Gen", "Sgt",
+		"Col"]
 
 # Various words which begin the page definition
 BEGIN_WORDS = [" is ", "was ", " are ", " were ", " describes ", " relates to ",
               " pertains to ", " means ", " refers to ", " occured ", " forms ",
 	      " served as ", " is concerned with ", " has been ", " comprises ",
-	      " states that "]
+	      " states that ", " displays ", " can refer to ", " consists of "]
 
 #
 # Removes everything in a string between the start and end strings
@@ -79,6 +85,8 @@ def unbracket (string):
 			string = removeBetween(string, "<li>", "</li>")
 		elif "<ul>" in string:
 			string = removeBetween(string, "<ul>", "</ul>")
+		elif "<dd>" in string:
+			string = removeBetween(string, "<dd>", "</dd>")
 		elif "<" in string:
 			string = removeBetween(string, "<", ">")
 		elif "\n" in string:
@@ -95,6 +103,10 @@ def unbracket (string):
 			string = string.replace("&amp;", "&")
 		elif "&#160;" in string:
 			string = string.replace("&#160;", " ")
+		elif "&lt;" in string:
+			string = string.replace("&lt;", "<")
+		elif "&gt;" in string:
+			string = string.replace("&gt;", ">")
 		else:
 			return string
 

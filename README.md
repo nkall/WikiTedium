@@ -1,4 +1,4 @@
-Gets a random Wiki article, formats it, and sends it off as a tweet three times an hour
+Gets a random Wiki article, formats it, and sends it off as a tweet two times an hour
 
 Usage: python3 wikitedium.py [--notweet|--manual]
 

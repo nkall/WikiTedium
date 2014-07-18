@@ -5,7 +5,7 @@ from wiki import *
 from TwitterAPI import TwitterAPI
 
 #
-#  Gets a random Wiki article, formats it, and sends it off as a tweet three times an hour
+#  Gets a random Wiki article, formats it, and sends it off as a tweet two times an hour
 #
 #  Usage: python3 wikitedium.py [--notweet/--manual]
 #  Flags:
@@ -76,9 +76,8 @@ def makeTweet():
 			fail_count += 1
 
 
-schedule.every().hour.at(':00').do(makeTweet)
-schedule.every().hour.at(':20').do(makeTweet)
-schedule.every().hour.at(':40').do(makeTweet)
+schedule.every().hour.at(':15').do(makeTweet)
+schedule.every().hour.at(':45').do(makeTweet)
 
 SHOULD_TWEET = True
 if (len(sys.argv) == 2):
